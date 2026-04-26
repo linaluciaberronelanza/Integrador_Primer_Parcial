@@ -4,26 +4,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TP berrone-lanza-lina-lucia-tp-typescript</title>
+    <title>Login - Tienda Enmohecida</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
-    <h1> Login</h1>
-
-    <form id="form">
-
-        <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" autocomplete="off" placeholder="example@example.com">
+    <header class="main-header">
+        <div class="logo-container">
+            <a href="#">
+                <img src="/images/logo 1.png" alt="Logo MOLDFRY">
+            </a>
         </div>
-        <div>
-            <label for="password">password</label>
-            <input type="password" id="password" name="password" autocomplete="off" placeholder="********">
+        <h1>MOLDFRY - Acceso Tóxico</h1>
+        <nav></nav>
+    </header>
+
+    <main class="main-login">
+        <div class="login-box">
+            <div class="linea-verde"></div>
+
+            <h2 class="login-titulo">Tienda Enmohecida</h2>
+            <p class="login-subtitulo">Iniciar Sesión</p>
+
+            <form id="form" class="login-form">
+                <div class="input-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" required placeholder="********">
+                </div>
+
+                <button type="submit" class="btn-ingresar">INGRESAR</button>
+            </form>
+
+            <div class="register-link">
+                <a href="../registro/registro.html">¿Aún no te has infectado? Regístrate aquí</a>
+            </div>
         </div>
+    </main>
 
-        <button type="submit">Ingresar</button>
+    <footer class="main-footer">
+        <div class="container-footer">
+            <div class="footer-column01">
+                <h3 class="footer-titulo">LA TIENDA</h3>
+                <img src="/images/logo 1.png" alt="Logo MOLDFRY" class="logo-footer">
+                <p class="logo-description">Consuma bajo su propio riesgo.</p>
+            </div>
 
-    </form>
+            <div class="footer-column02">
+                <h3 class="footer-titulo">UBICACIÓN</h3>
+                <ul class="footer-list">
+                    <li><i class="fa-solid fa-location-dot"></i> La Paz 1000, Rosario, Santa Fe, Argentina</li>
+                    <li><a href="mailto:intoxicacion@comidaenmohecida.com" class="list-link"><i
+                                class="fa-regular fa-envelope"></i> intoxicacion@comidaenmohecida.com</a></li>
+                    <li><a href="https://api.whatsapp.com/send?phone=5493416465533" class="list-link"><i
+                                class="fa-brands fa-whatsapp"></i> +549 3416465533</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column03">
+                <h3 class="footer-titulo">REDES</h3>
+                <div class="socialmedia-icons">
+                    <a href="#" class="icon-link"><i class="fa-brands fa-instagram fa-2xl"></i></a>
+                    <a href="#" class="icon-link"><i class="fa-brands fa-square-facebook fa-2xl"></i></a>
+                    <a href="#" class="icon-link"><i class="fa-brands fa-linkedin fa-2xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script type="module" src="./login.ts"></script>
 </body>

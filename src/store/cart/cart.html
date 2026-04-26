@@ -4,50 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo - Tienda Enmohecida</title>
-    <link rel="stylesheet" href="../../../style.css">
+    <title>Mi Carrito - Tienda Enmohecida</title>
+    <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
     <header class="main-header">
         <div class="logo-container">
-            <a href="#">
+            <a href="../../pages/client/home/home.html">
                 <img src="/images/logo 1.png" alt="Logo MOLDFRY">
             </a>
         </div>
-        <h1>MOLDFRY - Tienda Enmohecida</h1>
+        <h1>MOLDFRY - Tu Selección Putrefacta</h1>
         <nav>
             <ul>
-                <li><a href="#" class="active">Inicio</a></li>
-                <li><a href="../../../store/cart/cart.html">Carrito (<span id="cart-count">0</span>)</a></li>
+                <li><a href="../../pages/client/home/home.html">Volver al Catálogo</a></li>
                 <li><button id="logoutButton" class="btn-logout">Salir</button></li>
             </ul>
         </nav>
     </header>
 
-    <aside>
-        <h2>Categorías Putrefactas</h2>
-        <ul id="lista-categorias"></ul>
-    </aside>
+    <main class="main-login">
+        <div class="login-box cart-box">
 
-    <main>
-        <section>
-            <form action="#" method="GET" onsubmit="event.preventDefault();">
-                <label for="buscador">Buscar delicias caducadas:</label>
-                <input type="text" id="buscador" name="buscar" placeholder="Ej. Pancho radiactivo">
-            </form>
-        </section>
+            <div class="linea-verde"></div>
+            <h2 class="login-titulo">Detalle de tu Infección</h2>
 
-        <hr>
+            <div id="cart-items-container"></div>
 
-        <h2>Productos Horriblemente Destacados</h2>
+            <hr>
 
-        <section id="contenedor-productos">
-        </section>
+            <div class="cart-total-container">
+                <span>Total a pagar: </span>
+                <strong class="cart-total-price" id="cart-total">$0.00</strong>
+            </div>
+
+            <div class="cart-actions">
+                <button class="btn-ingresar btn-confirmar"
+                    onclick="alert('Funcionalidad de pago no requerida para el parcial')">CONFIRMAR COMPRA</button>
+            </div>
+        </div>
     </main>
-
-    <hr>
 
     <footer class="main-footer">
         <div class="container-footer">
@@ -79,7 +77,7 @@
         </div>
     </footer>
 
-    <script type="module" src="./home.ts"></script>
+    <script type="module" src="./cart.ts"></script>
 </body>
 
 </html>
