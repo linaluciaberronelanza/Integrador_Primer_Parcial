@@ -43,10 +43,8 @@ const renderizarCategorias = (): void => {
     botonesCategorias.forEach((boton: Element) => {
         boton.addEventListener("click", (e: Event) => {
             e.preventDefault();
-            // Quitamos la clase 'active' a todos
             botonesCategorias.forEach((b: Element) => b.classList.remove("active"));
 
-            // Le ponemos la clase 'active' al que clickeamos
             const target = e.target as HTMLElement;
             target.classList.add("active");
 
@@ -55,13 +53,13 @@ const renderizarCategorias = (): void => {
     });
 };
 
-// 4. Renderizar Productos
+// 4. Renderizar Productos (¡AHORA 100% LIMPIO DE ESTILOS!)
 const renderizarProductos = (productosAMostrar: Product[]): void => {
     if (!contenedorProductos) return;
     contenedorProductos.innerHTML = "";
 
     if (productosAMostrar.length === 0) {
-        contenedorProductos.innerHTML = "<h3 style='color: var(--gris-texto);'>No se encontraron delicias rancias...</h3>";
+        contenedorProductos.innerHTML = "<h3 class='no-products-msg'>No se encontraron delicias rancias...</h3>";
         return;
     }
 
@@ -81,7 +79,7 @@ const renderizarProductos = (productosAMostrar: Product[]): void => {
     });
 };
 
-// 5. Delegación de eventos para el carrito y BOTÓN AMARILLO (Sin colores inline)
+// 5. Delegación de eventos para el carrito y BOTÓN AMARILLO
 contenedorProductos?.addEventListener("click", (e: Event) => {
     const target = e.target as HTMLElement;
 
@@ -93,16 +91,17 @@ contenedorProductos?.addEventListener("click", (e: Event) => {
             addToCart(productoRancio);
             actualizarContadorCarrito();
 
-            // MAGIA VISUAL: Solo agregamos y quitamos la clase CSS
-            const textoOriginal = target.textContent;
+            const textoOriginal = "AGREGAR AL CARRITO";
 
-            target.classList.add("agregado"); // El CSS pone el color amarillo
+            // 1. Cambiamos el estado visual
+            target.classList.add("agregado");
             target.textContent = "¡INTOXICACIÓN AGREGADA!";
 
+            // 2. Cada botón crea su propio temporizador aislado a 500ms (medio segundo)
             setTimeout(() => {
-                target.classList.remove("agregado"); // Vuelve a la normalidad
+                target.classList.remove("agregado");
                 target.textContent = textoOriginal;
-            }, 2000);
+            }, 500);
         }
     }
 });

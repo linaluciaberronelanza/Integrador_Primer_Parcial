@@ -2,16 +2,32 @@ import { checkAuhtUser, logout } from "../../utils/auth";
 import type { Product } from "../../types/Product";
 import type { CartItem } from "../../types/CartItem";
 
-// --- PERSISTENCIA ---
-const CART_KEY = "carritoEnmohecido";
+// --- PERSISTENCIA DINÁMICA POR USUARIO ---
+
+// 1. Función para obtener una llave única basada en el email del usuario activo
+const getCartKey = (): string => {
+    // Leemos la "tarjeta de acceso temporal" donde guardas al usuario logueado
+    const userDataStr = localStorage.getItem("userData");
+
+    if (userDataStr) {
+        const usuarioActivo = JSON.parse(userDataStr);
+
+        if (usuarioActivo && usuarioActivo.email) {
+            // Si el usuario es lina@gmail.com, crea la llave: carrito_lina@gmail.com
+            return `carrito_${usuarioActivo.email}`;
+        }
+    }
+    // Llave de respaldo de seguridad
+    return "carritoEnmohecido_default";
+};
 
 export const getCart = (): CartItem[] => {
-    const cartStr = localStorage.getItem(CART_KEY);
+    const cartStr = localStorage.getItem(getCartKey());
     return cartStr ? JSON.parse(cartStr) : [];
 };
 
 export const saveCart = (cart: CartItem[]): void => {
-    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    localStorage.setItem(getCartKey(), JSON.stringify(cart));
 };
 
 export const addToCart = (producto: Product): void => {
@@ -110,6 +126,7 @@ if (typeof window !== "undefined" && document.getElementById("cart-items-contain
         cartTotalElement.textContent = `$${totalGeneral.toFixed(2)}`;
     };
 
+    // Escucha de eventos para sumar/restar
     cartItemsContainer?.addEventListener("click", (e: Event) => {
         const target = e.target as HTMLElement;
         if (target.classList.contains("btn-sumar")) {
@@ -122,6 +139,26 @@ if (typeof window !== "undefined" && document.getElementById("cart-items-contain
             updateQuantity(id, -1);
             renderizarCarrito();
         }
+    });
+
+    // COMPRA FINAL
+    const btnConfirmar = document.querySelector(".btn-confirmar");
+    btnConfirmar?.addEventListener("click", () => {
+        const carritoActual = getCart();
+
+        if (carritoActual.length === 0) {
+            alert("No puedes comprar la nada misma. Agrega algo putrefacto primero.");
+            return;
+        }
+
+        // 1. Mensaje de éxito al usuario
+        alert("¡COMPRA CONFIRMADA! Tus delicias en descomposición van en camino.");
+
+        // 2. Limpieza de persistencia usando nuestra función dinámica
+        localStorage.removeItem(getCartKey());
+
+        // 3. Volvemos a renderizar para que la pantalla se actualice al instante
+        renderizarCarrito();
     });
 
     renderizarCarrito();

@@ -11,9 +11,7 @@
   --amarillo-alerta: #eab308;
 }
 
-/* =========================================
-   ESTILOS GENERALES (BODY)
-   ========================================= */
+/*ESTILOS GENERALES (BODY)*/
 * {
   margin: 0;
   padding: 0;
@@ -29,9 +27,7 @@ body {
   min-height: 100vh;
 }
 
-/* =========================================
-   HEADER
-   ========================================= */
+/*HEADER*/
 .main-header {
   background-color: var(--gris-caja);
   border-bottom: 2px solid var(--verde-fluor);
@@ -112,9 +108,7 @@ body {
   color: var(--verde-fluor);
 }
 
-/* =========================================
-   ASIDE Y CATEGORÍAS
-   ========================================= */
+/*ASIDE Y CATEGORÍAS*/
 aside {
   padding: 20px;
   text-align: center;
@@ -160,9 +154,7 @@ aside h2 {
   font-weight: bold;
 }
 
-/* =========================================
-   MAIN HOME Y PRODUCTOS
-   ========================================= */
+/*MAIN HOME Y PRODUCTOS*/
 main {
   flex: 1;
   padding: 20px;
@@ -223,6 +215,15 @@ main h2 {
   gap: 30px;
   justify-content: center;
   width: 100%;
+}
+
+/* NUEVA CLASE: Mensaje cuando no hay productos */
+.no-products-msg {
+  color: var(--gris-texto);
+  width: 100%;
+  text-align: center;
+  padding: 40px;
+  font-weight: normal;
 }
 
 .producto-card {
@@ -295,9 +296,7 @@ main h2 {
   pointer-events: none;
 }
 
-/* =========================================
-   LOGIN BOX (Y CAJA DEL CARRITO)
-   ========================================= */
+/* LOGIN BOX (Y CAJA DEL CARRITO)*/
 .main-login {
   flex: 1;
   display: flex;
@@ -317,7 +316,6 @@ main h2 {
   text-align: center;
 }
 
-/* CORRECCIÓN: Anula el estilo horizontal del buscador para el form de login */
 .login-box form {
   display: block;
   background-color: transparent;
@@ -418,9 +416,7 @@ main h2 {
   color: var(--verde-fluor);
 }
 
-/* =========================================
-   TABLA DEL CARRITO Y CONTROLES
-   ========================================= */
+/* TABLA DEL CARRITO Y CONTROLES*/
 .cart-empty {
   text-align: center;
   padding: 40px;
@@ -516,9 +512,7 @@ main h2 {
   padding: 15px 40px;
 }
 
-/* =========================================
-   FOOTER
-   ========================================= */
+/*FOOTER*/
 .main-footer {
   background-color: var(--gris-caja);
   border-top: 2px solid var(--borde-input);
@@ -595,15 +589,12 @@ main h2 {
   color: var(--blanco-texto);
 }
 
-/* =========================================
-   REDES SOCIALES (Corrección de color y espacio)
-   ========================================= */
+/* REDES SOCIALES (Corrección de color y espacio)*/
 .socialmedia-icons {
   display: flex;
   justify-content: space-between;
   width: 100%;
   max-width: 220px;
-  margin: 10px;
 }
 
 .icon-link,
